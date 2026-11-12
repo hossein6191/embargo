@@ -1,0 +1,14 @@
+{
+  "name": "embargo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Embargo: a press embargo with teeth. Outlets that receive a release under embargo post a bond, and a page found on an outlet's own site reporting the story before the embargo lifts, read by validators on the live web, sends that outlet's bond to the issuer.",
+  "type": "module",
+  "scripts": {
+    "smoke": "node tests/on_chain/smoke.mjs"
+  },
+  "dependencies": {
+    "genlayer-js": "1.1.8",
+    "viem": "2.56.8"
+  }
+}
