@@ -4,7 +4,7 @@
 // DEMO_CONTRACT is the deployed copy the site reads when NEXT_PUBLIC_CONTRACT is unset. It is filled in
 // once the contract is deployed; while both are empty every page says the contract is not deployed
 // yet, and the whole site still works with NEXT_PUBLIC_MOCK=1.
-export const DEMO_CONTRACT: string = "";
+export const DEMO_CONTRACT: string = "0xd9e326E6890BaAeb2E8885782f5A7D140BE5b5e3";
 
 /**
  * The commit of the public repository whose outlets/ the demo outlets publish under, as
@@ -12,7 +12,7 @@ export const DEMO_CONTRACT: string = "";
  * repository is pushed; NEXT_PUBLIC_OUTLETS_COMMIT overrides it. While both are empty the demo outlets
  * cannot name their prefixes, so no demo release can be opened.
  */
-export const OUTLETS_COMMIT: string = "";
+export const OUTLETS_COMMIT: string = "95a5ce34b237760f5583b17eb015cb38d2429345";
 
 export const SITE_NAME = "Embargo";
 export const SITE_TAGLINE = "A press embargo with teeth.";

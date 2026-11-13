@@ -326,7 +326,37 @@ line.
 
 ## Evidence
 
-The on-chain run is recorded here once it has run.
+Run on 13 November 2026 on GenLayer Studio (chain 61999) by `tests/on_chain/smoke.mjs`, from generated accounts funded from the
+Studio faucet, none of them anybody's wallet: **ISSUER** issues the release, **POST** and **GAZETTE** join as outlets, **REPORTER** reports pages, **STRANGER** tries what it may not; the outlet pages were the files in `outlets/` pinned to commit 95a5ce34b237760f5583b17eb015cb38d2429345. **30 passed, 0 failed**; transactions: 22 in 22 steps; sent a second time: none.
+The whole log is `tests/on_chain/smoke-run.log`. Every validator read Harbour Post's pages against the release: the weather column read kept (the reporter's bond went to the outlet), and the early story read broken: 20% of Harbour Post's bond went to the reporter and 80% to the issuer in that transaction. After the embargo lifted a report was refused and Bay Gazette took its bond back.
+
+- `embargo.py` deployed at [`0xd9e326E6890BaAeb2E8885782f5A7D140BE5b5e3`](https://explorer-studio.genlayer.com/address/0xd9e326E6890BaAeb2E8885782f5A7D140BE5b5e3)
+
+- the code deployed at 0xd9e326E6890BaAeb2E8885782f5A7D140BE5b5e3 is byte for byte contracts/embargo.py: 63311 bytes, sha256 cfeb568beac1306a755dde729e177898e1899d035515d7f43e62cae26a3de88e
+
+| step | by | transactions | votes |
+|---|---|---|---|
+| ISSUER issues E1, "Lantern Bay Ferries adds a night crossing to Gull Island", under an embargo about 25 minutes ahead; each outlet stakes 1 GEN | ISSUER | [0x5d82c208…](https://explorer-studio.genlayer.com/tx/0x5d82c2086e9419d3d9ed715e85d93700af9b5e46e42c9c24b906eeb71219cc30), [0x13386598…](https://explorer-studio.genlayer.com/tx/0x13386598fb999af7872ef655b9178167b4846b5a033008d2c164a87271320fc1) | 3 agree, 0 disagree, 2 idle |
+| ISSUER may not join its own release as an outlet, and the 1 GEN comes back in the same transaction | ISSUER | [0xa2e9003b…](https://explorer-studio.genlayer.com/tx/0xa2e9003b3b33bf78be9ec90a14ec290aba728fb803609431341780b71372e2f0) | 3 agree, 0 disagree, 2 idle |
+| POST joins E1 with 1 GEN and its prefix outlets/harbour-post/, and the receipt carries the release | POST | [0xeff29957…](https://explorer-studio.genlayer.com/tx/0xeff29957ff035f119b717b69f4834750fbb1358791030012481a4ec30e512712) | 3 agree, 0 disagree, 2 idle |
+| POST's second join is refused (one join per outlet per release) and its 1 GEN comes back | POST | [0x6e5413db…](https://explorer-studio.genlayer.com/tx/0x6e5413dbe02e5362a1a6a9c99f36013956eee85985102981035e4c3339f16077) | 3 agree, 0 disagree, 2 idle |
+| GAZETTE sends 0.9 GEN for a 1 GEN bond: refused, and the 0.9 GEN comes back | GAZETTE | [0xe00a62b7…](https://explorer-studio.genlayer.com/tx/0xe00a62b7665011a64b1eb6d192aef14228453a5d04dba678282fa7be0142a29c) | 3 agree, 0 disagree, 2 idle |
+| GAZETTE joins E1 with 1 GEN and its prefix outlets/bay-gazette/ | GAZETTE | [0x883f6c42…](https://explorer-studio.genlayer.com/tx/0x883f6c42a0ffce0879c33b78874dbef1b01ef737cb40a0efeb6bc1777eb3094f) | 3 agree, 0 disagree, 2 idle |
+| POST may not take its bond back while the embargo holds | POST | [0xd2906781…](https://explorer-studio.genlayer.com/tx/0xd290678104e88fc1b4fdc093d14b694726a60233c2f1584b700dbf54d3e74358) | 3 agree, 0 disagree, 2 idle |
+| REPORTER reports with no credit: refused before anything is fetched | REPORTER | [0xfe171167…](https://explorer-studio.genlayer.com/tx/0xfe171167dbdd69b4730b793aa02934ca25e50855338b9dd4974564d380358308) | 3 agree, 0 disagree, 2 idle |
+| REPORTER deposits 0.1 GEN of report credit | REPORTER | [0xa519eb7a…](https://explorer-studio.genlayer.com/tx/0xa519eb7a9e95e607265cb1e9476748231d96d78737faf849b66fccda972510dd) | 3 agree, 0 disagree, 2 idle |
+| POST may not report itself | POST | [0x7dfdebe3…](https://explorer-studio.genlayer.com/tx/0x7dfdebe39f26d43fd3ad7c6c1813d963f888fcd3f5d2e8bbc6343d82dd85198a) | 3 agree, 0 disagree, 2 idle |
+| REPORTER points at the repository's README as a POST page, outside POST's prefix: refused before any fetch, nothing taken | REPORTER | [0x02c3ce10…](https://explorer-studio.genlayer.com/tx/0x02c3ce10fafb6c908cd319d2ace64e23ff8a4eb2d3349d9d4c54fbfbc59392c5) | 3 agree, 0 disagree, 2 idle |
+| every validator reads weather.html (a weather column): kept, and REPORTER's 0.02 GEN goes to POST | REPORTER | [0xf4b1310b…](https://explorer-studio.genlayer.com/tx/0xf4b1310beb9b9029c3c1f1572d7157ff0191019195a1eb2f2349a3d4bd614a58) | 3 agree, 0 disagree, 2 idle |
+| every validator reads ferries-feature.html (the company's history, not the announcement): kept, or unclear, and POST is paid the matching part of the report bond | REPORTER | [0x43d7451c…](https://explorer-studio.genlayer.com/tx/0x43d7451ce2dd10361d9ae875a124cdc6a4bc17230c7922f92ef48fbc2ce59881) | 3 agree, 0 disagree, 2 idle |
+| every validator reads early-story.html (the night crossing, before the embargo): broken; 0.2 GEN to REPORTER, 0.8 GEN to ISSUER, REPORTER's credit untouched | REPORTER | [0xa7373c27…](https://explorer-studio.genlayer.com/tx/0xa7373c27a8ea81333aab1fd5d2aefaae4c0efe9e59067290cfea3202cf84880b) | 3 agree, 0 disagree, 2 idle |
+| POST cannot be reported again: its bond is already paid out, refused before anything is fetched | REPORTER | [0x4523f61e…](https://explorer-studio.genlayer.com/tx/0x4523f61efd0d7982d5de3ddbbd9b0f39c28b6b57e6a885e72f04d896e52a9fe4) | 3 agree, 0 disagree, 2 idle |
+| after the embargo, REPORTER reports GAZETTE's story-after.html: refused before anything is fetched; a story published after it breaks nothing | REPORTER | [0x022a5185…](https://explorer-studio.genlayer.com/tx/0x022a5185b779f8b26ea8128121a2fb0658acef354081c8a463dc110517d40e98) | 4 agree, 0 disagree, 1 idle |
+| STRANGER may not take GAZETTE's bond | STRANGER | [0xd95b97f3…](https://explorer-studio.genlayer.com/tx/0xd95b97f3d4d02c701aade574169c983cfaf74d6fa16127896bf272a82efef478) | 4 agree, 0 disagree, 1 idle |
+| GAZETTE kept the embargo and takes its 1 GEN back | GAZETTE | [0x51d97904…](https://explorer-studio.genlayer.com/tx/0x51d97904cb294aa085339ee8e7ebffb13000b49b37d43defcbe916995d437327) | 3 agree, 0 disagree, 2 idle |
+| GAZETTE's second release_bond is refused: a bond is paid out once | GAZETTE | [0xd3d63ad2…](https://explorer-studio.genlayer.com/tx/0xd3d63ad250fc7c25b97cf9aee7bf2b08049bf735bd280d8dc6325c40e7aad87c) | 3 agree, 0 disagree, 2 idle |
+| POST cannot take back a bond it lost | POST | [0xd019e2ab…](https://explorer-studio.genlayer.com/tx/0xd019e2ab437530be1f92888d263cef493be0b94fc055820927bb838c8cc45166) | 3 agree, 0 disagree, 2 idle |
+| REPORTER takes its 0.06 GEN of credit back | REPORTER | [0x346c0f0f…](https://explorer-studio.genlayer.com/tx/0x346c0f0f12ba7040cac9ec3109981adcca7b792ab6fbd33f561f9ddefe5e3b97) | 4 agree, 0 disagree, 1 idle |
 
 ## Licence
 

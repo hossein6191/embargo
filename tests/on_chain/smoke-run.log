@@ -1,0 +1,103 @@
+[keeper] starting 2026-11-12T20:51:05.019Z
+[20:51:16] ISSUER    0xe721DE15231393969D91b4f3911c7431C22bA10A
+           POST      0xF98C7723D02465ed6b82C8c33cA9bAe22274Ed63
+           GAZETTE   0xBeF5a4147e42e5A820fD1447b609544EACC284BE
+           REPORTER  0x46a84bCfE3390DF45846F2E1B21342D82756e2A3
+           STRANGER  0x9252556C05aE510Ff070C043fB8831E661530bD0
+           POST's site https://raw.githubusercontent.com/hossein6191/embargo/95a5ce34b237760f5583b17eb015cb38d2429345/outlets/harbour-post/
+           GAZETTE's site https://raw.githubusercontent.com/hossein6191/embargo/95a5ce34b237760f5583b17eb015cb38d2429345/outlets/bay-gazette/
+
+[20:51:16] ---- phase A: deploy, the release under embargo, two outlets bonded
+      [20:51:59] ISSUER deploy embargo.py  0x5d82c2086e9419d3d9ed715e85d93700af9b5e46e42c9c24b906eeb71219cc30  3 agree, 0 disagree, 2 idle  SUCCESS  0xd9e326E6890BaAeb2E8885782f5A7D140BE5b5e3
+      Embargo at 0xd9e326E6890BaAeb2E8885782f5A7D140BE5b5e3
+GenLayer RPC error (eth_getTransactionCount): Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+      issue was not taken (Unexpected token '<', "<!DOCTYPE "... is not valid JSON); looking again in 20s
+      [20:53:04] ISSUER issue( night crossing to Gull Island,  1 June, the first in 30 years, 1794518219, 1000000000000000000)  0x13386598fb999af7872ef655b9178167b4846b5a033008d2c164a87271320fc1  3 agree, 0 disagree, 2 idle  SUCCESS
+PASS  ISSUER issues E1, "Lantern Bay Ferries adds a night crossing to Gull Island", under an embargo about 25 minutes ahead; each outlet stakes 1 GEN  - 3 agree, 0 disagree, 2 idle  {"ok": true, "release": "E1", "issuer": "0xe721de15231393969d91b4f3911c7431c22ba10a", "headline": "Lantern Bay Ferries a
+      [20:53:45] ISSUER join(E1, d2429345/outlets/harbour-post/) +1 GEN  0xa2e9003b3b33bf78be9ec90a14ec290aba728fb803609431341780b71372e2f0  3 agree, 0 disagree, 2 idle  SUCCESS
+PASS  ISSUER may not join its own release as an outlet, and the 1 GEN comes back in the same transaction  - 3 agree, 0 disagree, 2 idle  the issuer of E1 may not join its own release as an outlet
+      [20:54:24] POST join(E1, d2429345/outlets/harbour-post/) +1 GEN  0xeff29957ff035f119b717b69f4834750fbb1358791030012481a4ec30e512712  3 agree, 0 disagree, 2 idle  SUCCESS
+PASS  POST joins E1 with 1 GEN and its prefix outlets/harbour-post/, and the receipt carries the release  - 3 agree, 0 disagree, 2 idle  {"ok": true, "release": "E1", "outlet": "0xf98c7723d02465ed6b82c8c33ca9bae22274ed63", "site_prefix": "https://
+      [20:55:02] POST join(E1, d2429345/outlets/harbour-post/) +1 GEN  0x6e5413dbe02e5362a1a6a9c99f36013956eee85985102981035e4c3339f16077  3 agree, 0 disagree, 2 idle  SUCCESS
+PASS  POST's second join is refused (one join per outlet per release) and its 1 GEN comes back  - 3 agree, 0 disagree, 2 idle  0xf98c7723d02465ed6b82c8c33ca9bae22274ed63 has already joined E1; one join per outlet per release
+      [20:55:40] GAZETTE join(E1, 8d2429345/outlets/bay-gazette/) +0.9 GEN  0xe00a62b7665011a64b1eb6d192aef14228453a5d04dba678282fa7be0142a29c  3 agree, 0 disagree, 2 idle  SUCCESS
+PASS  GAZETTE sends 0.9 GEN for a 1 GEN bond: refused, and the 0.9 GEN comes back  - 3 agree, 0 disagree, 2 idle  send exactly the bond of 1000000000000000000 atto to join E1; this one sent 900000000000000000
+      [20:56:20] GAZETTE join(E1, 8d2429345/outlets/bay-gazette/) +1 GEN  0x883f6c42a0ffce0879c33b78874dbef1b01ef737cb40a0efeb6bc1777eb3094f  3 agree, 0 disagree, 2 idle  SUCCESS
+PASS  GAZETTE joins E1 with 1 GEN and its prefix outlets/bay-gazette/  - 3 agree, 0 disagree, 2 idle  {"ok": true, "release": "E1", "outlet": "0xbef5a4147e42e5a820fd1447b609544eacc284be", "site_prefix": "https://
+      [20:57:00] POST release_bond(E1, 2465ed6b82C8c33cA9bAe22274Ed63)  0xd290678104e88fc1b4fdc093d14b694726a60233c2f1584b700dbf54d3e74358  3 agree, 0 disagree, 2 idle  ERROR
+PASS  POST may not take its bond back while the embargo holds  - 3 agree, 0 disagree, 2 idle  [EXPECTED] the embargo on E1 holds until 1794518219; the bond comes back from then, in 1236 seconds
+
+[20:57:00] ---- phase B: the reports while the embargo holds, every page read by the validators on the live web
+      [20:57:38] REPORTER report(E1, 2465ed6b82C8c33cA9bAe22274Ed63, lets/harbour-post/weather.html)  0xfe171167dbdd69b4730b793aa02934ca25e50855338b9dd4974564d380358308  3 agree, 0 disagree, 2 idle  ERROR
+PASS  REPORTER reports with no credit: refused before anything is fetched  - 3 agree, 0 disagree, 2 idle  [EXPECTED] a report puts 20000000000000000 atto (0.02 GEN) of report credit at stake and this address holds 0; deposit() first
+      [20:58:15] REPORTER deposit() +0.1 GEN  0xa519eb7a9e95e607265cb1e9476748231d96d78737faf849b66fccda972510dd  3 agree, 0 disagree, 2 idle  SUCCESS
+PASS  REPORTER deposits 0.1 GEN of report credit  - 3 agree, 0 disagree, 2 idle  {"ok": true, "address": "0x46a84bcfe3390df45846f2e1b21342d82756e2a3", "added": "100000000000000000",
+      [20:58:52] POST report(E1, 2465ed6b82C8c33cA9bAe22274Ed63, /harbour-post/early-story.html)  0x7dfdebe39f26d43fd3ad7c6c1813d963f888fcd3f5d2e8bbc6343d82dd85198a  3 agree, 0 disagree, 2 idle  ERROR
+PASS  POST may not report itself  - 3 agree, 0 disagree, 2 idle  [EXPECTED] an outlet may not report itself; anyone else with credit may report it
+      [20:59:30] REPORTER report(E1, 2465ed6b82C8c33cA9bAe22274Ed63, b17eb015cb38d2429345/README.md)  0x02c3ce10fafb6c908cd319d2ace64e23ff8a4eb2d3349d9d4c54fbfbc59392c5  3 agree, 0 disagree, 2 idle  ERROR
+PASS  REPORTER points at the repository's README as a POST page, outside POST's prefix: refused before any fetch, nothing taken  - 3 agree, 0 disagree, 2 idle  [EXPECTED] the page is not below the site prefix https://raw.githubusercontent.com/hossein6191/embargo/95a5ce34b237760f5583b17eb015cb38d2429345/outlets/harbour-
+      .. 1049 s of the embargo left by the chain clock before the first report
+      [21:00:35] REPORTER report(E1, 2465ed6b82C8c33cA9bAe22274Ed63, lets/harbour-post/weather.html)  0xf4b1310beb9b9029c3c1f1572d7157ff0191019195a1eb2f2349a3d4bd614a58  3 agree, 0 disagree, 2 idle  SUCCESS
+PASS  every validator reads weather.html (a weather column): kept, and REPORTER's 0.02 GEN goes to POST  - 3 agree, 0 disagree, 2 idle  {"report":"R1","finding":"kept","fp":"a5acfb6dc333d535","credit":"80000000000000000"}
+      .. the stored fingerprint a5acfb6dc333d535; this checkout's file collapsed gives a5acfb6dc333d535
+      [21:02:41] REPORTER report(E1, 2465ed6b82C8c33cA9bAe22274Ed63, bour-post/ferries-feature.html)  0x43d7451ce2dd10361d9ae875a124cdc6a4bc17230c7922f92ef48fbc2ce59881  3 agree, 0 disagree, 2 idle  SUCCESS
+PASS  every validator reads ferries-feature.html (the company's history, not the announcement): kept, or unclear, and POST is paid the matching part of the report bond  - 3 agree, 0 disagree, 2 idle  {"report":"R2","finding":"kept","cost":"20000000000000000","fp":"a4bf50701ebaa999"}
+      .. 858 s of the embargo left by the chain clock before the early story is reported
+      [21:04:44] REPORTER report(E1, 2465ed6b82C8c33cA9bAe22274Ed63, /harbour-post/early-story.html)  0xa7373c27a8ea81333aab1fd5d2aefaae4c0efe9e59067290cfea3202cf84880b  3 agree, 0 disagree, 2 idle  SUCCESS
+PASS  every validator reads early-story.html (the night crossing, before the embargo): broken; 0.2 GEN to REPORTER, 0.8 GEN to ISSUER, REPORTER's credit untouched  - 3 agree, 0 disagree, 2 idle  {"report":"R3","finding":"broken","fp":"146ac57005c7950d","to_reporter":"200000000000000000","to_issuer":"800000000000000000"}
+      .. the stored fingerprint 146ac57005c7950d; this checkout's file collapsed gives 146ac57005c7950d
+      [21:05:23] REPORTER report(E1, 2465ed6b82C8c33cA9bAe22274Ed63, /harbour-post/early-story.html)  0x4523f61efd0d7982d5de3ddbbd9b0f39c28b6b57e6a885e72f04d896e52a9fe4  3 agree, 0 disagree, 2 idle  ERROR
+PASS  POST cannot be reported again: its bond is already paid out, refused before anything is fetched  - 3 agree, 0 disagree, 2 idle  [EXPECTED] 0xf98c7723d02465ed6b82c8c33ca9bae22274ed63 already broke the embargo on E1 (report R3); its bond is paid out, and only an outlet 
+
+[21:05:23] ---- phase C: the embargo lifts
+      [21:18:01] REPORTER report(E1, 42e5A820fD1447b609544EACC284BE, s/bay-gazette/story-after.html)  0x022a5185b779f8b26ea8128121a2fb0658acef354081c8a463dc110517d40e98  4 agree, 0 disagree, 1 idle  ERROR
+PASS  after the embargo, REPORTER reports GAZETTE's story-after.html: refused before anything is fetched; a story published after it breaks nothing  - 4 agree, 0 disagree, 1 idle  [EXPECTED] the embargo on E1 lifted at 1794518219; a story published after it breaks nothing, and reports are taken only while it holds
+      [21:18:40] STRANGER release_bond(E1, 42e5A820fD1447b609544EACC284BE)  0xd95b97f3d4d02c701aade574169c983cfaf74d6fa16127896bf272a82efef478  4 agree, 0 disagree, 1 idle  ERROR
+PASS  STRANGER may not take GAZETTE's bond  - 4 agree, 0 disagree, 1 idle  [EXPECTED] only the outlet 0xbef5a4147e42e5a820fd1447b609544eacc284be may take back its bond on E1
+      [21:19:19] GAZETTE release_bond(E1, 42e5A820fD1447b609544EACC284BE)  0x51d97904cb294aa085339ee8e7ebffb13000b49b37d43defcbe916995d437327  3 agree, 0 disagree, 2 idle  SUCCESS
+PASS  GAZETTE kept the embargo and takes its 1 GEN back  - 3 agree, 0 disagree, 2 idle  {"ok": true, "release": "E1", "outlet": "0xbef5a4147e42e5a820fd1447b609544eacc284be", "status": "released", "paid": "100
+      [21:19:58] GAZETTE release_bond(E1, 42e5A820fD1447b609544EACC284BE)  0xd3d63ad250fc7c25b97cf9aee7bf2b08049bf735bd280d8dc6325c40e7aad87c  3 agree, 0 disagree, 2 idle  ERROR
+PASS  GAZETTE's second release_bond is refused: a bond is paid out once  - 3 agree, 0 disagree, 2 idle  [EXPECTED] 0xbef5a4147e42e5a820fd1447b609544eacc284be took its bond on E1 back already; a bond is paid out once
+      [21:20:41] POST release_bond(E1, 2465ed6b82C8c33cA9bAe22274Ed63)  0xd019e2ab437530be1f92888d263cef493be0b94fc055820927bb838c8cc45166  3 agree, 0 disagree, 2 idle  ERROR
+PASS  POST cannot take back a bond it lost  - 3 agree, 0 disagree, 2 idle  [EXPECTED] 0xf98c7723d02465ed6b82c8c33ca9bae22274ed63 broke the embargo on E1 (report R3); its bond went to the reporter and the issuer, and
+
+[21:20:41] ---- phase D: the code read back, the views, the credit, the balances
+PASS  the code deployed at 0xd9e326E6890BaAeb2E8885782f5A7D140BE5b5e3 is byte for byte contracts/embargo.py  - 63311 bytes, sha256 cfeb568beac1306a755dde729e177898e1899d035515d7f43e62cae26a3de88e
+PASS  release(E1) reads lifted: two outlets, one broke the embargo, one took its bond back, nothing held  - {"phase":"lifted","record":{"outlets":2,"bonded":0,"broken":1,"released":1,"reports":3,"kept":2,"unclear":0,"repeats":0,"to_issuer":"800000000000000000","to_reporters":"200000000000000000","fees_to_outlets":"40000000000000000"}}
+PASS  outlets_of(E1) lists POST as having broken the embargo in R3 and GAZETTE as released, with their prefixes  - [["0xf98c77","broke","R3"],["0xbef5a4","released",""]]
+PASS  outlet(E1, POST) finds POST with its address in any letter case  - {"status":"broke","reports":3,"fees_won":"40000000000000000"}
+PASS  reports_of(E1) lists the three reports with the page, the finding, the fingerprint and where the money went  - [["R1","kept","20000000000000000","0","0"],["R2","kept","20000000000000000","0","0"],["R3","broken","0","200000000000000000","800000000000000000"]]
+PASS  stats(): one release, two joins, three reports, one breach, one bond back, three refused payments returned  - {"releases":1,"joins":2,"reports":3,"broken":1,"kept":2,"unclear":0,"repeats":0,"released":1,"held":"0","bonds_in":"2000000000000000000","released_total":"1000000000000000000","to_issuers":"800000000000000000","to_reporters":"200000000000000000","fees_to_outlets":"40000000000000000","credit":"60000000000000000","deposited":"100000000000000000","credit_out":"0","refused_payments":3,"returned":"2900000000000000000"}
+PASS  rules() publishes the questions word for word, the comparison, the combine table and the limits
+      [21:21:39] REPORTER withdraw()  0x346c0f0f12ba7040cac9ec3109981adcca7b792ab6fbd33f561f9ddefe5e3b97  4 agree, 0 disagree, 1 idle  SUCCESS
+PASS  REPORTER takes its 0.06 GEN of credit back  - 4 agree, 0 disagree, 1 idle  {"ok": true, "address": "0x46a84bcfe3390df45846f2e1b21342d82756e2a3", "withdrawn": "6000000000000000
+PASS  the contract's own balance is zero  - 0
+PASS  every account ends where the money says: ISSUER up 0.8 GEN, POST down its bond less the report bonds it won, GAZETTE and STRANGER even, REPORTER up its 20% less what its wrong reports cost  - ISSUER 0.8  POST -0.96  GAZETTE 0  REPORTER 0.16  STRANGER 0
+
+30 passed, 0 failed
+Embargo: 0xd9e326E6890BaAeb2E8885782f5A7D140BE5b5e3  https://explorer-studio.genlayer.com/address/0xd9e326E6890BaAeb2E8885782f5A7D140BE5b5e3
+transactions: 22 in 22 steps; sent a second time: none
+deploy               0x5d82c2086e9419d3d9ed715e85d93700af9b5e46e42c9c24b906eeb71219cc30 3 agree, 0 disagree, 2 idle SUCCESS
+issueE1              0x13386598fb999af7872ef655b9178167b4846b5a033008d2c164a87271320fc1 3 agree, 0 disagree, 2 idle SUCCESS
+joinIssuer           0xa2e9003b3b33bf78be9ec90a14ec290aba728fb803609431341780b71372e2f0 3 agree, 0 disagree, 2 idle SUCCESS
+joinPost             0xeff29957ff035f119b717b69f4834750fbb1358791030012481a4ec30e512712 3 agree, 0 disagree, 2 idle SUCCESS
+joinPostAgain        0x6e5413dbe02e5362a1a6a9c99f36013956eee85985102981035e4c3339f16077 3 agree, 0 disagree, 2 idle SUCCESS
+joinGazetteShort     0xe00a62b7665011a64b1eb6d192aef14228453a5d04dba678282fa7be0142a29c 3 agree, 0 disagree, 2 idle SUCCESS
+joinGazette          0x883f6c42a0ffce0879c33b78874dbef1b01ef737cb40a0efeb6bc1777eb3094f 3 agree, 0 disagree, 2 idle SUCCESS
+releasePostEarly     0xd290678104e88fc1b4fdc093d14b694726a60233c2f1584b700dbf54d3e74358 3 agree, 0 disagree, 2 idle ERROR
+reportNoCredit       0xfe171167dbdd69b4730b793aa02934ca25e50855338b9dd4974564d380358308 3 agree, 0 disagree, 2 idle ERROR
+depositR             0xa519eb7a9e95e607265cb1e9476748231d96d78737faf849b66fccda972510dd 3 agree, 0 disagree, 2 idle SUCCESS
+reportSelf           0x7dfdebe39f26d43fd3ad7c6c1813d963f888fcd3f5d2e8bbc6343d82dd85198a 3 agree, 0 disagree, 2 idle ERROR
+reportOutside        0x02c3ce10fafb6c908cd319d2ace64e23ff8a4eb2d3349d9d4c54fbfbc59392c5 3 agree, 0 disagree, 2 idle ERROR
+reportWeather        0xf4b1310beb9b9029c3c1f1572d7157ff0191019195a1eb2f2349a3d4bd614a58 3 agree, 0 disagree, 2 idle SUCCESS
+reportFeature        0x43d7451ce2dd10361d9ae875a124cdc6a4bc17230c7922f92ef48fbc2ce59881 3 agree, 0 disagree, 2 idle SUCCESS
+reportEarly          0xa7373c27a8ea81333aab1fd5d2aefaae4c0efe9e59067290cfea3202cf84880b 3 agree, 0 disagree, 2 idle SUCCESS
+reportPostAgain      0x4523f61efd0d7982d5de3ddbbd9b0f39c28b6b57e6a885e72f04d896e52a9fe4 3 agree, 0 disagree, 2 idle ERROR
+reportAfter          0x022a5185b779f8b26ea8128121a2fb0658acef354081c8a463dc110517d40e98 4 agree, 0 disagree, 1 idle ERROR
+releaseStranger      0xd95b97f3d4d02c701aade574169c983cfaf74d6fa16127896bf272a82efef478 4 agree, 0 disagree, 1 idle ERROR
+releaseGazette       0x51d97904cb294aa085339ee8e7ebffb13000b49b37d43defcbe916995d437327 3 agree, 0 disagree, 2 idle SUCCESS
+releaseGazetteAgain  0xd3d63ad250fc7c25b97cf9aee7bf2b08049bf735bd280d8dc6325c40e7aad87c 3 agree, 0 disagree, 2 idle ERROR
+releasePost          0xd019e2ab437530be1f92888d263cef493be0b94fc055820927bb838c8cc45166 3 agree, 0 disagree, 2 idle ERROR
+withdrawR            0x346c0f0f12ba7040cac9ec3109981adcca7b792ab6fbd33f561f9ddefe5e3b97 4 agree, 0 disagree, 1 idle SUCCESS
+
+exit 0
